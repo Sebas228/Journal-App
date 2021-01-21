@@ -12,7 +12,9 @@ export const Sidebar = () => {
           <span> Sebastian</span>
         </h3>
 
-        <button className="btn btn-light journal__btn-logout">Logout</button>
+        <button className="btn btn-light journal__btn-logout">
+          <i className="fas fa-sign-out-alt mr-1"></i>Logout
+        </button>
 
       </div>
 
