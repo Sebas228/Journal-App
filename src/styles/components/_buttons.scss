@@ -60,6 +60,14 @@
   width: 100%;
 }
 
+.btn-flex {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
 .google-btn {
   align-items: center;
   background-color: $white;
