@@ -14,6 +14,7 @@ import { login } from '../redux/actions/authActions'
 import { LoadingScreen } from '../components/ui/LoadingScreen'
 import { PublicRoute } from './PublicRoute'
 import { PrivateRoute } from './PrivateRoute'
+import { startLoadingNotes } from '../redux/actions/notesActions'
 
 export const AppRouter = () => {
 
@@ -27,8 +28,13 @@ export const AppRouter = () => {
     firebase.auth().onAuthStateChanged(user => {
 
       if (user?.uid) {
+
         dispatch(login(user.uid, user.displayName))
+
         setIsLoggedIn(true)
+
+        dispatch(startLoadingNotes(user.uid))
+
       } else {
         setIsLoggedIn(false)
       }

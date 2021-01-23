@@ -15,6 +15,20 @@
   button {
     margin-right: 10px;
   }
+
+  .notes__saving-message {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    & > div:after {
+      border-color: $dark-grey transparent $dark-grey transparent;
+    }
+
+    & p.error-saving-note {
+      color: lighten($color: red, $amount: 10);
+    }
+  }
 }
 
 .notes__content {

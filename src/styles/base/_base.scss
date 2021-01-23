@@ -108,6 +108,53 @@ main {
   animation: lds-dual-ring 1.2s linear infinite;
 }
 
+.text-primary {
+  color: $primary;
+}
+
+.text-muted {
+  color: #808080ad;
+}
+
+.file-upload-screen {
+  align-items: center;
+  background-color: rgba($color: $dark-grey, $alpha: 0.4);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+
+  .file-upload-box {
+    align-items: center;
+    background-color: $white;
+    box-shadow: 5px 5px 5px $dark-grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    width: 500px;
+
+    .file-upload-title {
+      border-bottom: 1px solid lighten($color: $dark-grey, $amount: 30);
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+      width: 100%;
+    }
+
+    h2 div:after {
+      border-color: $dark-grey transparent $dark-grey transparent;
+    }
+
+    p {
+      color: red;
+    }
+
+  }
+
+}
+
 @keyframes lds-dual-ring {
   0% {
     transform: rotate(0deg);

@@ -1,24 +1,42 @@
 import React from 'react'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import { useDispatch } from 'react-redux'
 
-export const JournalEntry = () => {
+import { activeNote } from '../../redux/actions/notesActions'
+
+dayjs.extend(relativeTime)
+
+export const JournalEntry = ({ id, title, body, date, lastUpdate, url }) => {
+
+  const dispatch = useDispatch()
+  const noteDate = dayjs(date)
+
+  const handleEntryClick = () => {
+    dispatch(activeNote(id, { title, body, date, lastUpdate, url }))
+  }
+
   return (
-    <div className="journal__entry pointer">
+    <div onClick={handleEntryClick} className="journal__entry pointer animate__animated animate__fadeInDown">
 
-      <div
-        className="journal__entry-picture"
-        style={{ backgroundSize: 'cover', backgroundImage: 'url(https://earthsky.org/upl/2018/12/comet-wirtanen-Jack-Fusco-dec-2018-Anza-Borrego-desert-CA-e1544613895713.jpg)' }}>
+      <div className="journal__entry-picture">
+        <i className={`fas fa-image fa-2x ${url ? 'text-primary' : 'text-muted'}`}></i>
       </div>
 
       <div className="journal__entry-body">
 
-        <p className="journal__entry-title">Un nuevo Dia</p>
-        <p className="journal__entry-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. asda asda qw eqw qwea sdas dasd as asdasda ds asd as </p>
+        <p className={`journal__entry-title ${title ? '' : 'no-title'}`}>
+          {title ? title : 'Your title here'}
+        </p>
 
+        <p className="journal__entry-last-update">
+          Last update: {dayjs(lastUpdate).fromNow()}
+        </p>
       </div>
 
       <div className="journal__date-box">
-        <span>Monday</span>
-        <h4>28</h4>
+        <span>{noteDate.format('MMM')}</span>
+        <h4>{noteDate.format('DD')}</h4>
       </div>
 
     </div>
